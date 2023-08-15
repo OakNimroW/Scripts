@@ -1,10 +1,26 @@
 #!/bin/bash
 
-# TO-DO file structure
-# [priority] TODO Description or name idk waht u want
-# [1] todo 1
-# [2] todo 2
-# [3] todo 3
+
+: '
+
+I added this 5 lines in my .zshrc
+
+# TO-DO List
+if [ -f /home/oaknimrow/TODO-List.txt -a -f /opt/Shell-TODO-List/shell-TODO-List.sh ]
+then
+    source /opt/Shell-TODO-List/shell-TODO-List.sh
+fi
+
+====================================================
+
+TO-DO file structure
+[priority] TODO Description or name idk waht u want
+[1] todo 1
+[2] todo 2
+[3] todo 3
+
+'
+
 
 #Colors
 greenColor="\e[0;32m\033[1m"
