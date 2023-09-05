@@ -4,6 +4,8 @@
 cd /path/to/proyect/
 ```
 
+## Configure
+
 Configure proyect distribution
 
 ```bash
@@ -12,11 +14,15 @@ cd baseFolder
 mkdir src bin
 ```
 
+## Create files
+
 create files.java in src folder
 
 ```bash
 touch src/File1.java src/Test.java src/AplicacionDePrueba.java src/Alumno.java
 ```
+
+## Compilation
 
 compile src files in bin folder
 
@@ -41,6 +47,8 @@ $ tree
     └── Test.java
 ```
 
+## Execution
+
 Execute compiled files
 
 ```bash
@@ -49,23 +57,20 @@ java -cp bin Test
 java -cp bin practica1.AplicacionDePrueba 0
 ```
 
+## Libraries
 
+```bash
+javac -d bin -cp libs/* src/*.java
+```
 
+## Examples
 
+Project in **"/home/oaknimrow/Desktop/The Folder/Carpetas/Uni/Terminado/Programacion 3/Practica 7/Programacion3"**, Practica 7 Parte A Programacion 3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```bash
+javac -d bin -cp lib/hamcrest-core-1.3.jar $(find . -name '*.java' -type f | grep -v "Test")
+java -cp bin ParteA.ParteA
+```
 
 
 
