@@ -35,55 +35,54 @@ grayColor="\e[0;37m\033[1m"
 file="/home/oaknimrow/TODO-List.txt"
 
 # Empty TO-DO List
-if [ ! -s $file ]; then
-	exit 0
+if [ -s $file ]; then
+
+  # Banner
+  echo -e -n "${purpleColor}\tTO-DO LIST${endColor}\n"
+  
+  while read line
+  do
+
+    if [ -z "$line" ]
+    then
+      continue
+    fi
+  
+    declare -i number=$(echo $line | /usr/bin/tr -d "[&]" | /usr/bin/awk '{print $1}')
+  
+    if [ $number -eq 1 ]
+    then
+  
+      echo -n -e "${redColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
+  
+    elif [ $number -eq 2 ]
+    then
+  
+      echo -n -e "${yellowColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
+  
+    elif [ $number -eq 3 ]
+    then
+  
+      echo -n -e "${turquoiseColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
+  
+    elif [ $number -eq 4 ]
+    then
+  
+      echo -n -e "${purpleColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
+  
+    elif [ $number -eq 5 ]
+    then
+  
+      echo -n -e "${blueColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
+  
+    else
+  
+      echo -n -e "${grayColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
+  
+    fi
+  
+  	echo ""
+  
+  done < "$file"
+
 fi
-
-# Banner
-echo -e -n "${purpleColor}\tTO-DO LIST${endColor}\n"
-
-while read line
-do
-
-  if [ -z "$line" ]
-  then
-    continue
-  fi
-
-  declare -i number=$(echo $line | /usr/bin/tr -d "[&]" | /usr/bin/awk '{print $1}')
-
-  if [ $number -eq 1 ]
-  then
-
-    echo -n -e "${redColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
-
-  elif [ $number -eq 2 ]
-  then
-
-    echo -n -e "${yellowColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
-
-  elif [ $number -eq 3 ]
-  then
-
-    echo -n -e "${turquoiseColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
-
-  elif [ $number -eq 4 ]
-  then
-
-    echo -n -e "${purpleColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
-
-  elif [ $number -eq 5 ]
-  then
-
-    echo -n -e "${blueColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
-
-  else
-
-    echo -n -e "${grayColor}[$number]${endColor} " && /usr/bin/bat --language=txt --style=plain --paging=never <(echo "$line" | /usr/bin/awk '{$1=""; $1=$1; sub(/^ */, ""); print}')
-
-  fi
-
-	echo ""
-
-done < "$file"
-
