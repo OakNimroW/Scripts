@@ -5,3 +5,9 @@ tar -cvzf 2023-01-21_Tar_File.tar.gz ./Directory_To_Compress
 
 # Encrypt
 gpg --output 2023-01-21_Tar_File.tar.gz.gpg --symmetric 2023-01-21_Tar_File.tar.gz
+
+# Decrypt
+gpg --output 2023-01-21_Tar_File.tar.gz --decrypt 2023-01-21_Tar_File.tar.gz.gpg
+
+# Decompress
+tar -xvzf 2023-01-21_Tar_File.tar.gz
